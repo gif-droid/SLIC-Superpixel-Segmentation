@@ -56,6 +56,9 @@ where:
 - \(d_s\) is the spatial distance,
 - \(S\) is the average spacing between cluster centers,
 - \(m\) controls the compactness of the superpixels.
+<p align="center">
+  <img src="presentation/6.png" width="800" alt="SLIC implementation workflow">
+</p>
 
 ---
 
@@ -76,7 +79,7 @@ The MATLAB implementation was divided into several functions corresponding to th
 The local search is restricted to a region around each cluster center instead of comparing every pixel with every center, which is one of the key principles behind the computational efficiency of SLIC.
 
 <p align="center">
-  <img src="presentation/6.png" width="800" alt="SLIC implementation workflow">
+  <img src="presentation/5.png" width="800" alt="SLIC implementation workflow">
 </p>
 
 ---
@@ -139,7 +142,7 @@ A larger **K** produces smaller and more detailed superpixels, while **m** contr
 - larger **m** → superpixels become more regular and compact
 
 <p align="center">
-  <img src="presentation/12.png" width="800" alt="Influence of K and m parameters">
+  <img src="presentation/13.png" width="800" alt="Influence of K and m parameters">
 </p>
 
 
