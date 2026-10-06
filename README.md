@@ -95,48 +95,54 @@ The implementation was tested on several types of images:
 
 Using different image domains allowed us to observe how the choice of SLIC parameters depends on image content and application.
 
+
 ---
 
-## Evaluation
+## Evaluation metrics
 
-Segmentation quality was evaluated using standard superpixel metrics:
+To evaluate the quality of the generated superpixels, we used standard superpixel segmentation metrics:
 
-### Boundary Recall (BR)
+- **Boundary Recall (BR)**: measures how well superpixel boundaries align with reference object boundaries.
+- **Under-Segmentation Error (UE)**: measures the extent to which superpixels leak across different regions.
+- **Achievable Segmentation Accuracy (ASA)**: measures how accurately the superpixels can represent the ground-truth segmentation.
 
-Measures how well superpixel boundaries recover the reference image boundaries.
+These metrics are useful for comparing segmentation quality and for choosing appropriate values of **K** and **m**.
 
-A **higher BR** indicates better boundary adherence.
+<p align="center">
+  <img src="presentation/9.png" width="800" alt="Evaluation metrics for SLIC">
+</p>
 
-### Under-Segmentation Error (UE)
+---
 
-Measures the amount of leakage of superpixels across reference regions.
+## Quantitative results
 
-A **lower UE** is preferred.
+The implementation was evaluated both qualitatively and quantitatively on several images.
 
-### Achievable Segmentation Accuracy (ASA)
+The results show that increasing the number of superpixels generally improves boundary adherence and segmentation accuracy, especially for images containing fine details or complex structures.
 
-Measures how well the generated superpixels can represent the reference segmentation.
-
-A **higher ASA** indicates better segmentation accuracy.
+<p align="center">
+  <img src="presentation/11.png" width="800" alt="Quantitative results of SLIC">
+</p>
 
 ---
 
 ## Influence of the parameters
 
-### Number of superpixels — K
+The experiments also focused on the influence of the two main SLIC parameters:
 
-Increasing **K** generates smaller superpixels and generally improves the representation of fine structures and object boundaries.
+- **K**: desired number of superpixels
+- **m**: compactness parameter
 
-However, this also increases the number of regions that must be processed.
+A larger **K** produces smaller and more detailed superpixels, while **m** controls the trade-off between boundary adherence and spatial regularity:
 
-### Compactness — m
+- smaller **m** → superpixels better follow image contours
+- larger **m** → superpixels become more regular and compact
 
-The parameter **m** controls the balance between color similarity and spatial regularity.
+<p align="center">
+  <img src="presentation/12.png" width="800" alt="Influence of K and m parameters">
+</p>
 
-- Smaller **m** → superpixels follow image boundaries more closely.
-- Larger **m** → superpixels become more regular and compact.
 
-The experiments therefore focused on finding an appropriate compromise between these two parameters depending on the image and the application.
 
 ---
 
